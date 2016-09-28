@@ -1,0 +1,36 @@
+<aura:component >
+    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
+                          /resource/jasmine_2_4_1_css"
+                  scripts="/resource/jasmine_2_4_1_js,
+                           /resource/jasmine_2_4_1_console_js,
+                           /resource/jasmine_2_4_1_html_js,
+                           /resource/jasmine_2_4_1_boot_js,
+                           /resource/1471705337000/JasmineReporter" />
+    
+    
+    <aura:handler event="c:JobListEvent" action="{!c.receiveJobs}"/>
+    <aura:handler event="c:RunTestsEvent" action="{!c.runTests}"/>
+    <aura:attribute name="jobWrappers" type="JobWrapper" />
+    
+    <aura:iteration items="{!v.jobWrappers}" var="wrap">
+        <div class="slds-card slds-m-around--medium">
+            <div class="slds-card__header slds-theme--alt-inverse slds-grid"
+                 style="padding-bottom: 0.75em">
+                <div class="slds-text-heading--small">{!wrap.job.Name}</div>
+            </div>
+            <div class="slds-card__body slds-theme--default">
+                <div class="slds-p-around--medium ">
+                    <aura:unescapedHtml value="{!wrap.job.Description__c}"/>
+                </div>
+            </div>
+            <div class="slds-card__footer">
+                <section class="slds-clearfix">
+                        <aura:iteration items="{!wrap.skills}" var="skill">
+                            <span class="label label-default" style="font-style: italic; margin-right:4px;">{!skill.Name}</span>
+                        </aura:iteration>
+                </section>
+            </div>
+        </div>
+    </aura:iteration>
+    
+</aura:component>

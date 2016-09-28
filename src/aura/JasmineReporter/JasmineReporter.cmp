@@ -1,0 +1,17 @@
+<aura:component extensible="true">
+    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
+                          /resource/jasmine_2_4_1_css"
+                  scripts="/resource/jasmine_2_4_1_js,
+                           /resource/jasmine_2_4_1_console_js,
+                           /resource/jasmine_2_4_1_html_js,
+                           /resource/jasmine_2_4_1_boot_js" />
+	
+    <aura:attribute name="testsRun" type="Boolean" default="false" />
+    <aura:attribute name="result" type="object" />
+    
+    <aura:registerEvent name="JasmineReporterInitiaslied" type="c:JasmineReporterInitialisedEvt" />
+    <aura:handler event="c:InitialiseJasmineReporterEvt" action="{!c.initialiseJasmineReporter}"/>
+
+    {!v.body}
+    
+</aura:component>

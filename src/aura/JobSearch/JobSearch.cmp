@@ -1,0 +1,69 @@
+<aura:component controller="JobsController">
+    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
+                          /resource/jasmine_2_4_1_css"
+                  scripts="/resource/jasmine_2_4_1_js,
+                           /resource/jasmine_2_4_1_console_js,
+                           /resource/jasmine_2_4_1_html_js,
+                           /resource/jasmine_2_4_1_boot_js,
+                           /resource/1471705337000/JasmineReporter" />
+    
+    <aura:handler event="c:RunTestsEvent" action="{!c.doTest}"/>
+    <aura:handler event="c:JobInitEvent" action="{!c.doInit}"/>
+    
+    <aura:registerEvent name="JobsChangedEvent" type="c:JobListEvent" />
+    <aura:registerEvent name="TestResultEvent" type="c:TestResultEvent" />
+    <aura:attribute name="skills" type="Skill__c[]" />
+    <aura:attribute name="searchString" type="String" />
+    <aura:attribute name="showWorking" type="Boolean" default="false" />
+    
+    <div class="slds-card slds-m-around--medium">
+        <div class="slds-card__header slds-grid">
+            <div class="slds-text-heading--small">Search</div>
+        </div>
+        <div class="slds-card__body slds-theme--default">
+            <div class="slds-m-around--medium ">
+                <div class="slds-form-element slds-p-top--medium">
+                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--left">
+                        <c:SVG ariahidden="true" class="slds-input__icon slds-icon-text-default"
+                               xlinkHref="/resource/SLDS0202/assets/icons/utility-sprite/svg/symbols.svg#search" />
+                        <ui:inputText aura:id="search" value="{!v.searchString}" class="slds-input" placeholder="Enter search text ..." />
+                    </div>
+                </div>
+                <section class="slds-clearfix">
+                    <div class="slds-grid slds-wrap slds-p-top--medium">
+                        <aura:iteration items="{!v.skills}" var="skill">
+                            <div class="slds-col slds-size--1-of-2">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <input type="checkbox" name="options" id="{!'skillcb_' + skill.Name}" value="{!skill.Name}" />
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label">{!skill.Name}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </aura:iteration>
+                    </div>
+                    <div class="slds-grid slds-p-bottom--medium">
+                        <div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-1 slds-large-size--1-of-2">
+                            <button class="slds-button slds-button--destructive slds-m-top--medium" onclick="{!c.clearSearch}">x</button>
+                        </div>
+                        <div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-1 slds-large-size--1-of-2">
+                            <button class="slds-button slds-button--brand slds-m-top--medium" onclick="{!c.doSearch}">Go</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.showWorking}">
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--large" aria-hidden="false" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

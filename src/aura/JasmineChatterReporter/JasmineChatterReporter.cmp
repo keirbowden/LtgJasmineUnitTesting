@@ -1,0 +1,14 @@
+<aura:component extends="c:JasmineReporter" controller="ChatterReporterController">
+    <aura:handler name="change" value="{!v.testsRun}" action="{!c.showResults}"/>
+    <aura:attribute name="posted" type="Boolean" default="false" />
+    <aura:attribute name="link" type="String" />
+    
+    <div class="slds-p-top--large slds-text-heading--large slds-align--absolute-center">
+        <aura:if isTrue="{!v.posted}">
+            Posted!
+            <aura:set attribute="else">
+                Posting - please wait.
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

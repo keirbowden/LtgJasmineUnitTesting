@@ -1,0 +1,109 @@
+<aura:component extends="c:JasmineReporter">
+    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css" />
+    
+    <aura:handler name="change" value="{!v.testsRun}" action="{!c.showResults}"/>
+    <aura:attribute name="isSalesforce1" type="Boolean" default="false" />
+    
+    <aura:if isTrue="{!v.testsRun}">
+        <div class="slds-p-top--large slds-p-bottom--large">
+            <div class="slds-text-heading--large slds-align--absolute-center">
+                Overall status
+            </div>
+            <aura:if isTrue="{!$Browser.formFactor=='DESKTOP'}">
+                <div class="slds-p-top--large slds-icon_container slds-align--absolute-center" title="Status">                                
+                    <div class="slds-truncate" title="Status">
+                        <c:SVG ariahidden="true" class="slds-icon slds-icon-text-default slds-icon--large" style="{!'fill:' + (0==v.result.totalFailures?'#3AB245':'#FF0000')}"
+                               xlinkHref="{!'/resource/SLDS0202/assets/icons/utility-sprite/svg/symbols.svg#' + (0==v.result.totalFailures?'check':'close')}" />
+                    </div>
+                </div>
+                <aura:set attribute="else">
+                    <div class="slds-p-top--large slds-text-heading--large slds-align--absolute-center">
+                        {!0==v.result.totalFailures?'Pass':'Fail'}
+                    </div>
+                </aura:set>
+            </aura:if>
+            <div class="slds-p-top--large slds-text-heading--medium slds-align--absolute-center">
+                Successes : {!v.result.totalSuccesses} Failures: {!v.result.totalFailures}
+            </div>
+        </div>
+        <aura:if isTrue="false">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.result.suites}" var="suite">
+                    <div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-4">
+                        <div class="slds-m-around--medium">
+                            <p class="slds-text-heading--medium">{!suite.name}</p>
+                            <ul class="slds-has-dividers--around-space">
+                                <aura:iteration items="{!suite.specs}" var="spec">
+                                    <li class="slds-item">
+                                        <div class="slds-tile slds-tile--board">
+                                            <h3 class="slds-truncate" title="{!spec.name}"><a href="javascript:void(0);">{!spec.name}</a></h3>
+                                            <div class="slds-tile__detail slds-text-body--small">
+                                                <p class="slds-truncate">Successes {!spec.successes}</p>
+                                                <p class="slds-truncate">Failures {!spec.failureCount}</p>
+                                            </div>
+                                        </div>
+                                    </li>    
+                                </aura:iteration>
+                            </ul>
+                        </div>
+                    </div>
+                </aura:iteration>
+            </div>
+        </aura:if>
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Status">Status</div>
+                    </th>    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Suite">Suite</div>
+                    </th>    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Spec">Spec</div>
+                    </th>    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Successes">Successes</div>
+                    </th>    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Failures">Failures</div>
+                    </th>    
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.result.suites}" var="suite">
+                    <aura:iteration items="{!suite.specs}" var="spec">
+                        <tr>
+                            <td data-label="Status">
+                                <aura:if isTrue="{!$Browser.formFactor=='DESKTOP'}">
+                                    <span class="slds-icon_container" title="Status">                                
+                                        <div class="slds-truncate" title="Status">
+                                            <c:SVG ariahidden="true" class="slds-icon slds-icon-text-default slds-icon--small"
+                                                   style="{!'fill:' + (0==spec.failureCount?'#3AB245':'#FF0000')}"
+                                                   xlinkHref="{!'/resource/SLDS0202/assets/icons/utility-sprite/svg/symbols.svg#' + (0==spec.failureCount?'check':'close')}" />
+                                        </div>
+                                    </span>
+                                    <aura:set attribute="else">
+                                        {!0==spec.failureCount?'Pass':'Fail'}
+                                    </aura:set>
+                                </aura:if>
+                            </td>
+                            <th scope="row" data-label="Suite">
+                                <div class="slds-truncate" title="{!suite.name}"><a href="javascript:void(0);">{!suite.name}</a></div>
+                            </th>
+                            <td data-label="Spec">
+                                <div class="slds-truncate" title="{!spec.name}">{!spec.name}</div>
+                            </td>
+                            <td data-label="Successes">
+                                <div class="slds-truncate" title="{!spec.successes}">{!spec.successes}</div>
+                            </td>
+                            <td data-label="Failures">
+                                <div class="slds-truncate" title="{!spec.failures}">{!spec.failureCount}</div>
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,55 @@
+<aura:component >
+    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
+                          /resource/jasmine_2_4_1_css"
+                  scripts="/resource/jasmine_2_4_1_js,
+                           /resource/jasmine_2_4_1_console_js,
+                           /resource/jasmine_2_4_1_html_js,
+                           /resource/jasmine_2_4_1_boot_js" 
+                  afterScriptsLoaded="{!c.doInit}" />
+    
+    <aura:registerEvent name="RunTestsEvent" type="c:RunTestsEvent" />
+    <aura:handler event="c:TestResultEvent" action="{!c.processTestResult}"/>
+
+    <aura:registerEvent name="InitialiseJasmineReporter" type="c:InitialiseJasmineReporterEvt" />
+    <aura:handler event="c:JasmineReporterInitialisedEvt" action="{!c.jasmineReporterInitialised}"/>
+    
+    <aura:attribute name="completed" type="Integer" default="0" />
+    <aura:attribute name="run" type="Boolean" default="false" />
+    <aura:attribute name="type" type="String" default="" />
+    
+    <div style="display:none">
+        <c:JobSearch />
+        <c:JobList />
+    </div>    
+    
+    <div class="slds">
+        
+        <div class="slds-page-header" role="banner">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <c:SVG ariahidden="true" class="slds-icon slds-icon--large slds-icon-standard-news"
+                                   xlinkHref="/resource/SLDS0202/assets/icons/standard-sprite/svg/symbols.svg#news" />
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-page-header__title slds-truncate slds-align-middle" title="Unit Tests">Unit Tests</p>
+                            <p class="slds-text-body--small slds-max-x-small-hide slds-page-header__info">Testing • Lightning • Jasmine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-m-around--medium">
+            
+            <aura:if isTrue="{!v.type=='sldsTable'}">
+	            <c:JasmineSLDSReporter testsRun="{!v.run}"/> 
+			</aura:if>
+            <aura:if isTrue="{!v.type=='chatter'}">
+	            <c:JasmineChatterReporter testsRun="{!v.run}"/> 
+			</aura:if>
+        </div>
+    </div>
+	
+</aura:component>
