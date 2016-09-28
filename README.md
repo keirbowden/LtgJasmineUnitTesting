@@ -1,5 +1,5 @@
-# LtgJasmineUnitTesting
-Codebase for the Unit Testing Lightning Components with Jasmine Dreamforce 16 Dev Zone talk
+# Unit Testing Lightning Components with Jasmine
+Codebase for my Dreamforce 16 Dev Zone Talk
 
 ## My Domain
 Lightning components require My Domain so don't forget to turn that on first!
