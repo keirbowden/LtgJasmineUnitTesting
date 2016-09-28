@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * JobWrapper
+ *
+ * Description: 
+ * 
+ * Wrapper class for a job, the skills and any applications
+ *
+ * If you are the sort of person who enjoys reading code, you may be interested
+ * in a career with BrightGen - check out http://www.brightgen.com or
+ * email recruitment@brightgen.com
+ *
+ * Author Keir Bowden
+ * Date Aug 2016
+ *
+ * Changes:
+ ********************************************************************************/
 public class JobWrapper
 {
     @AuraEnabled

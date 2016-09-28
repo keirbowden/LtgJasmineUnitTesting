@@ -1,7 +1,22 @@
-public class JobsController
+/*******************************************************************************
+ * JobsController
+ *
+ * Description: 
+ * 
+ * Custom controller for the Jobs demo application created for the Dreamforce 
+ * 16 talk on Unit Testing Lightning Components with Jasmine 
+ *
+ * If you are the sort of person who enjoys reading code, you may be interested
+ * in a career with BrightGen - check out http://www.brightgen.com or
+ * email recruitment@brightgen.com
+ *
+ * Author Keir Bowden
+ * Date Aug 2016
+ *
+ * Changes:
+ ********************************************************************************/
+ public class JobsController
 {
-    public List<JobWrapper> jobWrappers {get; set;}
-
     @AuraEnabled
     public static List<JobWrapper> GetRecentJobs()
     {
