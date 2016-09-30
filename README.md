@@ -1,5 +1,5 @@
 # Unit Testing Lightning Components with Jasmine
-Codebase for my Dreamforce 16 Dev Zone Talk
+Codebase for my Dreamforce 16 Dev Zone Talk. You can find the slides [here](http://www.slideshare.net/keirb/unit-testing-lightning-components-with-jasmine).
 
 ## My Domain
 Lightning components require My Domain so don't forget to turn that on first!
