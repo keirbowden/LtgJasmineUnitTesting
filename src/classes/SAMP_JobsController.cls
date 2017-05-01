@@ -15,10 +15,10 @@
  *
  * Changes:
  ********************************************************************************/
- public class JobsController
+ public class SAMP_JobsController
 {
     @AuraEnabled
-    public static List<JobWrapper> GetRecentJobs()
+    public static List<SAMP_JobWrapper> GetRecentJobs()
     {
         List<Job_Posting__c> jobs=[select id, Name, Description__c, Start_Date__c, End_Date__c,
                                     (select Skill__r.Name from Job_Skills__r)
@@ -28,7 +28,7 @@
         return wrapJobs(jobs);
     }
 
-    private static List<JobWrapper> wrapJobs(List<Job_Posting__c> jobs)
+    private static List<SAMP_JobWrapper> wrapJobs(List<Job_Posting__c> jobs)
     {
         Map<Id, Job_Application__c> applicationsByJobId=new Map<Id, Job_Application__c>();
         List<Job_Application__c> applications=[select id, Name, CreatedDate, Job_Posting__c
@@ -39,10 +39,10 @@
             applicationsByJobId.put(app.Job_Posting__c, app);
         }
 
-        List<JobWrapper> wrappers=new List<JobWrapper>();
+        List<SAMP_JobWrapper> wrappers=new List<SAMP_JobWrapper>();
         for (Job_Posting__c job : jobs)
         {
-            JobWrapper jw=new JobWrapper(new Job_Posting__c(id=job.id,
+            SAMP_JobWrapper jw=new SAMP_JobWrapper(new Job_Posting__c(id=job.id,
                                                             Name=job.Name,
                                                             Description__c=job.Description__c,
                                                             Start_Date__c=job.Start_Date__c,
@@ -76,7 +76,7 @@
     }
 
     @AuraEnabled
-    public static List<JobWrapper> SearchJobs(String searchStr, String skillsStr)
+    public static List<SAMP_JobWrapper> SearchJobs(String searchStr, String skillsStr)
     {
         List<String> skills=null;
         if (!String.IsBlank(skillsStr))
@@ -88,7 +88,7 @@
         return SearchJobs(searchStr, skills);
     }
 
-    private static List<JobWrapper> SearchJobs(String searchStr, List<String> skills)
+    private static List<SAMP_JobWrapper> SearchJobs(String searchStr, List<String> skills)
     {
         List<Job_Posting__c> jps;
         if ( (!String.isBlank(searchStr)) && (searchStr.length()>=2) )

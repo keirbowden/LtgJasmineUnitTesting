@@ -15,7 +15,7 @@
  *
  * Changes:
  ********************************************************************************/
-public class ChatterReporterController {
+public class LJUT_ChatterReporterController {
 	@AuraEnabled
     public static void PostResultsToChatter(String message, String link)
     {

@@ -1,9 +1,9 @@
 /** *****************************************************************************
- * JobsController_Test
+ * ChatterReporterController_Test
  *
  * Description: 
  * 
- * Test class for the JobsController 
+ * Test class for the ChatterReporterController 
  *
  * If you are the sort of person who enjoys reading code, you may be interested
  * in a career with BrightGen - check out http://www.brightgen.com or
@@ -15,14 +15,11 @@
  * Changes:
  ********************************************************************************/
 @isTest
-private class JobsController_Test 
+private class LJUT_ChatterReporterController_Test 
 {
 	@isTest
 	static void TestController() 
 	{
-		JobsSetup.SetupData();
-		JobsController.GetRecentJobs();
-		List<Skill__c> skills=JobsController.GetSkills();
-		JobsController.SearchJobs('test', 'test');
+		LJUT_ChatterReporterController.PostResultsToChatter('Unit Test', 'http://www.brightgen.com');
 	}
 }

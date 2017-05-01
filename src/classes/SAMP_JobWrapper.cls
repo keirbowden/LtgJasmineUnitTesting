@@ -14,7 +14,7 @@
  *
  * Changes:
  ********************************************************************************/
-public class JobWrapper
+public class SAMP_JobWrapper
 {
     @AuraEnabled
     public Job_Posting__c job {get; set;}
@@ -23,7 +23,7 @@ public class JobWrapper
     @AuraEnabled
     public List<Skill__c> skills {get; set;}
         
-    public JobWrapper(Job_Posting__c job)
+    public SAMP_JobWrapper(Job_Posting__c job)
     {
         this.job=job;
     }

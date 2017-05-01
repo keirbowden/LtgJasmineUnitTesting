@@ -1,4 +1,4 @@
-<aura:component controller="JobsController">
+<aura:component controller="SAMP_JobsController">
     <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
                           /resource/jasmine_2_4_1_css"
                   scripts="/resource/jasmine_2_4_1_js,

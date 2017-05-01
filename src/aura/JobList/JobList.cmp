@@ -10,7 +10,7 @@
     
     <aura:handler event="c:JobListEvent" action="{!c.receiveJobs}"/>
     <aura:handler event="c:RunTestsEvent" action="{!c.runTests}"/>
-    <aura:attribute name="jobWrappers" type="JobWrapper" />
+    <aura:attribute name="jobWrappers" type="SAMP_JobWrapper" />
     
     <aura:iteration items="{!v.jobWrappers}" var="wrap">
         <div class="slds-card slds-m-around--medium">

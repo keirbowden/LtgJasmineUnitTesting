@@ -14,7 +14,7 @@
  *
  * Changes:
  ********************************************************************************/
-public class JobsSetup {
+public class SAMP_JobsSetup {
     public static void SetupData()
     {
         SetupSkills();
