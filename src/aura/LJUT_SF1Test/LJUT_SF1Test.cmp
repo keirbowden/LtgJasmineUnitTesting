@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable">
+    <c:LJUT_Test type="sldsTable" />
+</aura:component>

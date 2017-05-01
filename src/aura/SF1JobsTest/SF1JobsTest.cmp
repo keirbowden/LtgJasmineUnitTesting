@@ -1,3 +1,0 @@
-<aura:component implements="force:appHostable">
-    <c:JobsTest type="sldsTable" />
-</aura:component>
