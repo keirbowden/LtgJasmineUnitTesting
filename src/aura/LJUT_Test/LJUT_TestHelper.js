@@ -18,9 +18,15 @@
         completed++;
         console.log('Completed = ' + completed);
         component.set('v.completed', completed);
-        if (2==completed) {
+        
+        var numberOfComponentsToTest = this.getNumberOfComponentsToTest(component);
+        if (completed === numberOfComponentsToTest) {
             this.executeJasmine(component);
         }
+    },
+    getNumberOfComponentsToTest : function(component) {
+    	// TODO: Improve this logic so it does not need to be manually set!
+        return component.get('v.numberOfComponentsToTest');
     },
     executeJasmine : function(component) {
         var env = jasmine.getEnv();        

@@ -16,10 +16,19 @@
     <aura:attribute name="completed" type="Integer" default="0" />
     <aura:attribute name="run" type="Boolean" default="false" />
     <aura:attribute name="type" type="String" default="" />
-    
-    <div style="display:none"> 
-        <c:SAMP_JobSearch />
+
+	<!--
+		IMPORTANT: If numberOfComponentsToTest is not manually updated, either:
+			A) Not all tests will execute; or
+			B) Results will not render
+			
+		TODO: Automate this 
+	-->
+    <aura:attribute name="numberOfComponentsToTest" type="Integer" default="3" /> 
+    <div id="lightning-components-to-test" style="display:none"> 
+        <c:SAMP_HelloTesting />
         <c:SAMP_JobList />
+        <c:SAMP_JobSearch />
     </div>    
     
     <div class="slds">
