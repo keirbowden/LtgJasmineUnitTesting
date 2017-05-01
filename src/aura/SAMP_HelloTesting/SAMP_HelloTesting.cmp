@@ -1,0 +1,14 @@
+<aura:component>
+	    <ltng:require styles="/resource/SLDS0202/assets/styles/salesforce-lightning-design-system.css,
+                          /resource/jasmine_2_4_1_css"
+                  scripts="/resource/jasmine_2_4_1_js,
+                           /resource/jasmine_2_4_1_console_js,
+                           /resource/jasmine_2_4_1_html_js,
+                           /resource/jasmine_2_4_1_boot_js,
+                           /resource/1471705337000/JasmineReporter" />
+    
+    <aura:handler event="c:LJUT_RunTestsEvent" action="{!c.doTests}"/>
+    
+    <aura:attribute name="value" type="String" default="Good Bye!" />
+    <h1>Hello Testing!</h1>
+</aura:component>

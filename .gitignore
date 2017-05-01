@@ -1,0 +1,4 @@
+.project
+.settings/
+salesforce.schema
+src/package.xml
