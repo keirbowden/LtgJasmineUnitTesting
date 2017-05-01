@@ -39,7 +39,7 @@
         return sf;
     },
     reloadApp : function(component, type) {
-        var url='JobsTestApp.app?type=' + type;
+        var url='LJUT_TestApp.app?type=' + type;
         if (this.hasSForceOne) {
             sforce.one.navigateToURL(url);
         }

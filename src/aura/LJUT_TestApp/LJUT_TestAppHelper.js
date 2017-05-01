@@ -28,6 +28,6 @@
         component.set('v.run', true);
     },
     reloadApp : function(component, type) {
-        window.location.assign('JobsTestApp.app?type=' + type);
+        window.location.assign('LJUT_TestApp.app?type=' + type);
     }
 })
